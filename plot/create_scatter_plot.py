@@ -66,7 +66,11 @@ if __name__ == "__main__":
     df_country = df.drop(index)
 
     # create directory to place the scatter plots
-    os.mkdir("scatter_plots")
+    try:
+        os.mkdir("scatter_plots")
+    except:
+        print("Directory already exists !")
+
 
     year_list = ['2010', '2011', '2012', '2013', '2014']
 

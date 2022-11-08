@@ -26,40 +26,40 @@ non_country_list = ['Arab World', 'Central Europe and the Baltics', 'Caribbean s
 
 
 def create_flat_world_plot(year='2010'):
-    data = [ dict(
-        type = 'choropleth',
-        locations = df_country['Country Code'],
-        z = df_country[year],
-        text = df_country['Country Name'],
-        colorscale = 'Reds',
-        autocolorscale = False,
-        reversescale = False,
-        marker = dict(
-            line = dict (
-                color = 'rgb(180,180,180)',
-                width = 0.5
-            ) ),
-        colorbar = dict(
-            autotick = False,
-            title = 'Unemployment (%)'),
-    ) ]
+    data = [dict(
+        type='choropleth',
+        locations=df_country['Country Code'],
+        z=df_country[year],
+        text=df_country['Country Name'],
+        colorscale='Reds',
+        autocolorscale=False,
+        reversescale=False,
+        marker=dict(
+            line=dict(
+                color='rgb(180,180,180)',
+                width=0.5
+            )),
+        colorbar=dict(
+            autotick=False,
+            title='Unemployment (%)'),
+    )]
 
     layout = dict(
-        title = f'Unemployment around the globe in {year}',
-        geo = dict(
-            showframe = True,
-            showcoastlines = True,
-            showocean = True,
+        title=f'Unemployment around the globe in {year}',
+        geo=dict(
+            showframe=True,
+            showcoastlines=True,
+            showocean=True,
             #oceancolor = 'rgb(0,255,255)',
-            oceancolor = 'rgb(222,243,246)',
-            projection = dict(
-                type = 'Mercator'
+            oceancolor='rgb(222,243,246)',
+            projection=dict(
+                type='Mercator'
             )
         )
     )
 
-    fig = dict( data=data, layout=layout )
-    py.plot( fig, validate=False,filename=f'./flat_world_plots/flat_world_plot_{year}')
+    fig = dict(data=data, layout=layout)
+    py.plot(fig, validate=False, filename=f'./flat_world_plots/flat_world_plot_{year}')
 
 
 if __name__ == "__main__":
@@ -72,7 +72,10 @@ if __name__ == "__main__":
     df_country = df.drop(index)
 
     # create directory to place the scatter plots
-    os.mkdir("flat_world_plots")
+    try:
+        os.mkdir("flat_world_plots")
+    except:
+        print("Directory already exists !")
 
     year_list = ['2010', '2011', '2012', '2013', '2014']
 

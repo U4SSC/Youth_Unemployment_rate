@@ -1,0 +1,4 @@
+pip install requirements.txt
+python create_circle_world_plot.py
+python create_flat_world_plot.py
+python create_scatter_plot.py
