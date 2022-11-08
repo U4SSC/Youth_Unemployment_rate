@@ -26,45 +26,14 @@ import seaborn as sns
 import warnings
 warnings.filterwarnings('ignore')
 
-# get_ipython().run_line_magic('matplotlib', 'inline')
-
-
-# In[2]:
-
-
-# ls
-
-
-# Read the file and take a first look at the various columns and the values contained therein. Also do check the size of the matrix/dataframe imported that you are going to work on.
-
-# In[3]:
 
 
 df=pd.read_csv('./data/API_ILO_country_YU.csv')
-# df.head(5)
-
-
-# In[4]:
-
-
-# df.shape
-
 
 #  A look into the various columns and the country names is a preliminary first step into analyzing the data. Looking into column names gives an idea of what might be contained in the data and a look into the countries here will help us determine if any countries are repeated. Since only 219 rows are there a manual check of each row is possible in this case. Also we have to check whether all the data is only for individual nations or also from Supranational organizations (like UN, EU, SAARC, G8, G20 to name a few) or from banking institutions (IBD,ADB,IMF,income categorization etc.). This will help us in the analysis as it won't make sense to compare countries with organization groups (this is akin to apple vs oranges). A detailed analysis will look into the data vis-a-vis at the level of individual countries and as part of an organization. A certain extent of the success of these organizations can be judged from the unemployment statistics as to how successful these organizations in living up to the aspirations of the youth, in negotiating with each other for providing job opportunities to the young population of the group members. Though it will only provide one facet or one metric of success/failure of an organization yet it will bring into fore the effects of these organizations.
 #
 # The process that will be followed in this project is to first divide the original datasets into a number of constituent smaller datasets each catering to one group viz. Individual Counteries, Supranational Groups and finally the income groups. Then we can have a peek on how unemployment has affected the world around us and which regions/counteries are most and least afflicted by it
 # and which have been most and least successful in tiding over the unemployment crisis.
-
-# In[5]:
-
-
-#df.columns
-
-
-# If we take a quick glance at the imported dataset it is revealed that a lot of enteries in the 'Country Name' and 'Country Code' columns of the dataset are actually supranational entities (EU, Euro Area, Arab World etc.) and groups based on Income/Banking Institutions classifications (IDA, IBRD, High Income) apart from several other enteries. For our analysis purposes we will segregate the original dataset acording to the type of enteries i.e. Country, Supranational and Income Groups. For the purpose of this segregation we will make a list of all 'non-country' entities and then drop them from the initial dataset to obtain a country only data. The other datasets too will then be devised using similar lists.
-
-# In[6]:
-
 
 non_country_list=['Arab World','Central Europe and the Baltics','Caribbean small states','East Asia & Pacific (excluding high income)',
                  'Early-demographic dividend', 'East Asia & Pacific','Europe & Central Asia (excluding high income)',
@@ -79,34 +48,8 @@ non_country_list=['Arab World','Central Europe and the Baltics','Caribbean small
                  'Middle East & North Africa (IDA & IBRD countries)','South Asia (IDA & IBRD)',
                  'Sub-Saharan Africa (IDA & IBRD countries)','Upper middle income','World']
 
-
-# In[7]:
-
-
 df_non_country=df[df['Country Name'].isin(non_country_list)]
-
-
-# In[8]:
-
-
-#df_non_country.head()
-
-
-# In[9]:
-
-
-#df_non_country.shape
-
-
-# In[10]:
-
-
 index=df_non_country.index
-
-
-# In[11]:
-
-
 df_country=df.drop(index)
 
 
