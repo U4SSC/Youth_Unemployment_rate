@@ -7,7 +7,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 import plotly.offline as py
-py.init_notebook_mode(connected=True)
 warnings.filterwarnings('ignore')
 
 
