@@ -7,7 +7,11 @@ import plotly.tools as tls
 import seaborn as sns
 import warnings
 import os
-import random
+import sys
+sys.path.append(os.path.dirname("../../link2mysql/"))
+sys.path.append('../../')
+import link2mysql
+from link2mysql import dbconnect,config
 warnings.filterwarnings('ignore')
 
 non_country_list = ['Arab World', 'Central Europe and the Baltics', 'Caribbean small states', 'East Asia & Pacific (excluding high income)',
@@ -46,7 +50,10 @@ def create_2d_plot(selected_countries=[]):
 
 if __name__ == "__main__":
     # read data
-    df = pd.read_csv('../data/API_ILO_country_YU.csv')
+    # from db
+    df = dbconnect.select_all("kpi_1")
+    # from csv path
+    # df = pd.read_csv('../data/API_ILO_country_YU.csv')
 
     # filter the data by noncountry list
     df_non_country = df[df['Country Name'].isin(non_country_list)]

@@ -1,12 +1,17 @@
-import warnings
-import seaborn as sns
-import plotly.tools as tls
-import plotly.graph_objs as go
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import os
 import plotly.offline as py
+import plotly.graph_objs as go
+import plotly.tools as tls
+import seaborn as sns
+import warnings
+import os
+import sys
+sys.path.append(os.path.dirname("../../link2mysql/"))
+sys.path.append('../../')
+import link2mysql
+from link2mysql import dbconnect,config
 warnings.filterwarnings('ignore')
 
 
@@ -57,7 +62,10 @@ def create_scatter_plot(year='2010'):
 
 if __name__ == "__main__":
     # read data
-    df = pd.read_csv('../data/API_ILO_country_YU.csv')
+    # from db
+    df = dbconnect.select_all("kpi_1")
+    # from csv path
+    # df = pd.read_csv('../data/API_ILO_country_YU.csv')
 
     # filter the data by noncountry list
     df_non_country = df[df['Country Name'].isin(non_country_list)]
