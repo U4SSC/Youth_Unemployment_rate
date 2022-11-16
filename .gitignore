@@ -1,2 +1,6 @@
 *.html
 *.ipynb_checkpoints
+2d_plot
+circle_world_plots
+flat_world_plots
+scatter_plots
