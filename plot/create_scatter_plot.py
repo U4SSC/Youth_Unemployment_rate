@@ -57,7 +57,7 @@ def create_scatter_plot(year='2010'):
         showlegend=False,
     )
     fig = go.Figure(data=[trace], layout=layout)
-    py.plot(fig, filename=f'./scatter_plots/scatter_plot_{year}')
+    py.plot(fig, filename=f'./scatter_plots/scatter_plot_{year}', auto_open=False)
 
 
 if __name__ == "__main__":

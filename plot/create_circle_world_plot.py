@@ -64,7 +64,7 @@ def create_circle_world_plot(year='2010'):
         ),
     )
     fig = dict(data=data, layout=layout)
-    py.plot(fig,validate=False, filename=f'./circle_world_plots/circle_world_plot_{year}')
+    py.plot(fig,validate=False, filename=f'./circle_world_plots/circle_world_plot_{year}', auto_open=False)
 
 
 if __name__ == "__main__":

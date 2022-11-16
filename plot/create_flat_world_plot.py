@@ -63,7 +63,7 @@ def create_flat_world_plot(year='2010'):
     )
 
     fig = dict(data=data, layout=layout)
-    py.plot(fig, validate=False, filename=f'./flat_world_plots/flat_world_plot_{year}')
+    py.plot(fig, validate=False, filename=f'./flat_world_plots/flat_world_plot_{year}', auto_open=False)
 
 
 if __name__ == "__main__":
