@@ -14,7 +14,7 @@ cd ./Youth_Unemployment_rate/plot
 ```
 3.生成圖案 plot directory裡，會生成3個資料夾存放三種plot
 ```
-bash generate_plots.sh
+python3 generator.py
 ```
 ## Data Description
 World Bank - Youth Unemployment rates (IPO) by country, 2010 - 2014
